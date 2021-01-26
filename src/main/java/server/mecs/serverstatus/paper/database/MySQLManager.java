@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 
 /**
@@ -199,5 +200,27 @@ public class MySQLManager {
         } catch (SQLException var4) {
         }
 
+    }
+
+    ////////////////////////////////
+    //       Setup BlockingQueue
+    ////////////////////////////////
+    static LinkedBlockingQueue<String> blockingQueue = new LinkedBlockingQueue<>();
+
+    public static void setupBlockingQueue(JavaPlugin plugin, String conName) {
+        new Thread(() -> {
+            MySQLManager mysql = new MySQLManager(plugin, conName);
+            try {
+                while (true) {
+                    String take = blockingQueue.take();
+                    mysql.execute(take);
+                }
+            }catch (Exception e) {
+            }
+        }).start();
+    }
+
+    public static void executeQueue(String query) {
+        blockingQueue.add(query);
     }
 }
