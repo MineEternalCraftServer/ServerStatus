@@ -1,3 +1,5 @@
 name: ServerStatus
 version: @version@
 main: server.mecs.serverstatus.paper.ServerStatus
+commands:
+  startrecordingbukkit:

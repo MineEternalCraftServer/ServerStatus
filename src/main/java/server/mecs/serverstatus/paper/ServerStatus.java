@@ -8,6 +8,8 @@ public final class ServerStatus extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getCommand("startrecordingbukkit").setExecutor(new Command());
+
         setupBlockingQueue(this, "Grafana Queue");
     }
 

@@ -1,3 +1,5 @@
 name: ServerStatus
 version: @version@
 main: server.mecs.serverstatus.bungee.ServerStatus
+commands:
+  startrecordingbungee:
