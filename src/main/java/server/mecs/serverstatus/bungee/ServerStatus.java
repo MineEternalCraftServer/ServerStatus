@@ -1,4 +1,4 @@
-package server.mecs.serverstatus.paper.bungee;
+package server.mecs.serverstatus.bungee;
 
 import net.md_5.bungee.api.plugin.Plugin;
 

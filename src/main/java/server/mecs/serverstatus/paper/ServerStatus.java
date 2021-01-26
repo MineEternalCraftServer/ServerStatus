@@ -1,4 +1,4 @@
-package server.mecs.serverstatus.paper.paper;
+package server.mecs.serverstatus.paper;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
