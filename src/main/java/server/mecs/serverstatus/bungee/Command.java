@@ -27,13 +27,14 @@ public class Command extends net.md_5.bungee.api.plugin.Command {
         }
 
         isEnabled = true;
+        sender.sendMessage(new ComponentBuilder("[ServerStatus] Recording Start").create());
 
         new Thread(() -> {
             while (isEnabled) {
                 try {
                     Thread.sleep(1000);
 
-                    String query = "INSERT INTO vps_usage (cpu_usage,memory_usage,process_time) " +
+                    String query = "INSERT INTO vps (cpu_usage,memory_usage,process_time) " +
                             "VALUES (" + cpu.getCPUusage() + "," + mem.getMEMORYusage() + "," + process.getProcessTime() + ");";
 
                     executeQueue(query);
